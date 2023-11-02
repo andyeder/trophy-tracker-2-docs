@@ -4,8 +4,11 @@
 
 ### Quick Links
 
-- [Database documentation](./docs/Database.md)
+- [Coding Conventions](./docs/CodingConventions.md)
+- [Database Design](./docs/Database.md)
+- [Definitions](./docs/Definitions.md)
 - [Tooling documentation](./docs/TechTooling.md)
+- [Testing Conventions](./docs/TestingConventions.md)
 
 ### More about the RS Clio 182 Trophy
 
