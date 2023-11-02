@@ -26,8 +26,8 @@ The CarSchema represents a single vehicle.
 | Field               | Type     | Description                                                                              |
 | :------------------ | :------- | :--------------------------------------------------------------------------------------- |
 | \_id                | ObjectId | Id (auto-generated).                                                                     |
-| createdAt           | Date     | Document creation date (auto-generated via Mongoose schema #timestamps option).          |
-| updatedAt           | Date     | Document updated date (auto-generated via Mongoose schema #timestamps option).           |
+| createdAt           | Date     | Document creation date (auto-generated via Mongoose #timestamps option).                 |
+| updatedAt           | Date     | Document updated date (auto-generated via Mongoose #timestamps option).                  |
 | trophyNumber        | Number   | The supposedly unique car number - 001-500 (UK), 01-50 (SWISS).                          |
 | numberOfViews       | Number   | The number of times that this car has been viewed.                                       |
 | targetMarket        | String   | The target market for this car, either "UK" or "SWISS".                                  |
@@ -39,7 +39,7 @@ The CarSchema represents a single vehicle.
 | vrmHistory          | Array    | The car's VRM history (see VRMChange object).                                            |
 | mileageRecorded     | Number   | The car's recorded (last known) mileage.                                                 |
 | mileageRecordedDate | Date     | The date on which the car's recorded (last known) mileage was taken.                     |
-| signatureItems      | Array    | The car's "signature items" (see SignatureItems object).                                 |
+| signatureItems      | Object   | The car's "signature items" (see SignatureItems object).                                 |
 | hasBeenScrapped     | Boolean  | Whether or not this car has been scrapped.                                               |
 | scrappedDate        | Date     | Date on which the car was scrapped.                                                      |
 | images              | Array    | Images of the car (String array, specified as relative/local URL?).                      |
@@ -107,4 +107,24 @@ The ExternalLinks object is used to capture links (URLs) to other sites that con
 
 ### Collection - users
 
-TBD.
+The User schema represents a single user. (Work-in-progress...)
+
+| Field       | Type     | Description                                                              |
+| :---------- | :------- | :----------------------------------------------------------------------- |
+| \_id        | ObjectId | Id (auto-generated).                                                     |
+| createdAt   | Date     | Document creation date (auto-generated via Mongoose #timestamps option). |
+| updatedAt   | Date     | Document updated date (auto-generated via Mongoose #timestamps option).  |
+| username    | String   | The user's name.                                                         |
+| email       | String   | The user's email address.                                                |
+| password    | String   | The user's password (will be encrypted).                                 |
+| permissions | Object   | The user's permissions (see UserPermissions object).                     |
+
+#### UserPermissions Object
+
+The UserPermissions object holds a user's create, update and delete permissions, which determine whether or not that user has the ability to create, update and/or delete documents.
+
+| Field     | Type    | Description                                   |
+| :-------- | :------ | :-------------------------------------------- |
+| canCreate | Boolean | Whether or not the user can create documents. |
+| canUpdate | Boolean | Whether or not the user can update documents. |
+| canDelete | Boolean | Whether or not the user can delete documents. |
