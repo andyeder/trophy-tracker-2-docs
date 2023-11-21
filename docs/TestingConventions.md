@@ -4,7 +4,7 @@ Every Unit should have a Unit test providing a minimum of 80% test coverage. The
 
 When preparing test data be aware that the JavaScript engine processes JSON faster than the equivalent JavaScript Array/Object.  
 
-## [FIRST](https://www.appsdeveloperblog.com/the-first-principle-in-unit-testing/) testing principles 
+## [FIRST](https://medium.com/@tasdikrahman/f-i-r-s-t-principles-of-testing-1a497acda8d6) testing principles 
 
 * **Fast**: Each test case should as compact as possible with as few dependencies as possible to ensure is runs quickly.  
 
@@ -18,7 +18,7 @@ When preparing test data be aware that the JavaScript engine processes JSON fast
 
 For example, two sequential if/else statements require just two tests to exercise all the paths through the code (True/True plus False/False) but four test cases to exercise all the routes through the code (True/True, True/False, False/True, False/False.)  
 
-## [AAA(A)](https://www.thephilocoder.com/unit-testing-aaa-pattern/) test case structure 
+## [AAA(A)](https://learn.microsoft.com/en-us/visualstudio/test/unit-test-basics?view=vs-2022#write-your-tests) test case structure 
 
 * **Arrange** the test environment including preparing the Unit subject to test (UST).  
 
@@ -40,7 +40,7 @@ The fourth A: Consider adding **Affirm/Assure** steps immediately after the Arra
 
 1. Test cases should avoid including branching or looping logic, even when this means creating considerably more, almost identical test cases. 
 
-1. When using multiple expect statements in an async test case, use the expect.assertions to provide Jest with an indication of how many expect statement are required to confirm the test case. This avoids some false positives. 
+1. When using multiple expect statements in an async test case, use the [expect.assertions](https://jestjs.io/docs/expect#expectassertionsnumber) to provide Jest with an indication of how many expect statement are required to confirm the test case. This avoids some false positives. 
 
 1. Where the number of 'expect' statements that will be executed in a test case cannot be determined (see point 15) a comment should be added to the test case stating the fact. 
 

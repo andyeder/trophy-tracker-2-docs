@@ -2,7 +2,7 @@
 
 Before commencing implementation make sure the requirement is well defined and even documents if sufficiently complex.  
 
-## Clean Code Principles (courtesy of Robert C. "Uncle Bob" Martin) 
+## [Clean Code Principles](https://www.freecodecamp.org/news/clean-coding-for-beginners/) (courtesy of Robert C. "Uncle Bob" Martin) 
 
 1. Magic numbers - all values (numbers and strings) should be used via a variable with a name that describes its purpose.  
 
@@ -32,15 +32,15 @@ Before commencing implementation make sure the requirement is well defined and e
 
 ## Tooling 
 
-1. Employ an active linter like TSLint or ESLint.  
+1. Employ an active linter like [TSLint](https://palantir.github.io/tslint/) or [ESLint](https://eslint.org/).  
 
-1. Use a prettifier configured to revise on save to ensure common rules are applied consistently.  
+1. Use a [prettifier](https://prettier.io/) configured to revise on save to ensure common rules are applied consistently.  
 
-1. Consider using TypeScript especially on larger development teams.  
+1. Consider using [TypeScript](https://www.typescriptlang.org/) especially on larger development teams.  
 
-1. Consider using CSS pre-processor like SCSS/LESS/Stylus to maintain your CSS.  
+1. Consider using CSS pre-processor like [SCSS](https://sass-lang.com/)/[LESS](https://lesscss.org/)/[Stylus](https://stylus-lang.com/) to maintain your CSS.  
 
-    * Also employ a naming methodology such as BEM, BEVM or CUBE. 
+    * Also employ a naming methodology such as [BEM](https://getbem.com/), [BEVM](https://www.slideshare.net/Jyaasa/bevm-blockelementvariation-modifier) or [CUBE](https://cube.fyi/). 
 
 ## General guidance 
 
@@ -173,15 +173,15 @@ Before commencing implementation make sure the requirement is well defined and e
 
 1. One component per file and consolidate component (and its sub-component) files in its/their own folder. 
 
-1. Include an index.js ('barrel') file in each component folder to reduce the length of the reference path. 
+1. Include an index.js ('[barrel](https://srinivasankk.com/javascript-barrel/)') file in each component folder to reduce the length of the reference path. Update, Recent articles have brought this advice into question but investigations into moderate sized projects do not indicate is technique to be problematic.
 
 ## Observed Don'ts and Does 
 
-The following list are a set of recommendations to improve current practice and make the current code base more consistent with other frontend projects. Links to relevant MDN pages have been provided. 
+The following list are a set of recommendations to improve current practice and make the current code base more consistent with other frontend projects. Links to relevant [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) pages have been provided. 
 
 | #    | Don't   | Do     |
 | :--: | :----: | :----: |
-| 1    | Evaluate the length of an array or size of map/set for truth/false. | Use the truthy/falsy nature of the numeric coercion, 0 = false, non-zero = true. |
+| 1    | Evaluate the length of an array or size of map/set for truth/false. | Use the [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)/[falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) nature of the numeric coercion, 0 = false, non-zero = true. |
 || `if (array.length === 0)` | `if (!array.length)` |
 || `if (array.length >= 1)` | `if (array.length)` |
 || `if (string.length < 1)` | `if (!string.length)` |
@@ -190,16 +190,16 @@ The following list are a set of recommendations to improve current practice and 
 | 2 | Evaluate of a Boolean variable against a Boolean literal | Use the Boolean value directly. This also applies when the conditional expression is using in a ternary operation. |
 || `if (booleanValue === true)` | `if (booleanValue)` |
 || `if (booleanValue !== true)` | `if (!booleanValue)` |
-| 3 | Concatenate strings using the plus operator | Use Template Literals (back-tick delimiters with interpolation) |
+| 3 | Concatenate strings using the plus operator | Use [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (back-tick delimiters with interpolation) |
 || `let fullString = variableOne + ' ' + variableTwo;` | `let fullString = \`${variableOne} ${variableTwo}\`;` |
-| 4 | Append items on an array individually when they can be done in a batch. | See MDN |
+| 4 | Append items on an array individually when they can be done in a batch. | [See MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) |
 || `destinationArray.push(itemOne);` | `destinationArray.push(itemOne, itemTwo, itemThree);` |
 || `destinationArray.push(itemTwo);` ||
 || `destinationArray.push(itemThree);` ||
 | 5 | Use a ternary operator to return literal true/false. | Just use the condition, even if it needs inverting. |
 || `let variable = (condition) ? true : false;` | `let variable = condition;` |
 || `return (condition) ? false : true;` | `return !condition;` |
-| 6 | Always check for the existence of a property in an object using the in operator. | Often using optional-chaining will simplify things. |
+| 6 | Always check for the existence of a property in an object using the in operator. | Often using [optional-chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) will simplify things. |
 || `'time' in props.filters && 'key' in props.filters.time` | `'key' in props.filters?.time` |
 || | Care has to be taken when dealing with properties holding primitive values as the falsy value can provide the same feedback as a null or undefined property. In the example above, if the property 'key' is expected to hold a complex value like an object or array, the following can be used to check the property is valid. |
 || | `props.filters?.time?.key` |
@@ -210,12 +210,12 @@ The following list are a set of recommendations to improve current practice and 
 || `    // do some action context of THIS` |  `  // do some action context of THIS ` |
 || ` }` | ` }`| 
 || `}` | `}` |
-| 8 | Use the ternary operator for simple conditionals such as: | Use the logical shortcut &&. |
+| 8 | Use the ternary operator for simple conditionals such as: | Use the [logical shortcut &&](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND). |
 || `(condition) ? doSomething() : null;  /*Do nothing */` |  `(condition) && doSomething(); `|
 || | Especially in the case of conditional rendering of JSX. |
-| 9 | **Use the ternary operator to avoid (truthy) value override.** | **Use the logical shortcut \|\|.** |
+| 9 | **Use the ternary operator to avoid (truthy) value override.** | **Use the [logical shortcut \|\|](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment).** |
 || `let x = (x !== '') ? x : y; // keep x if not an empty string, otherwise set to y` | `let x \|\|= y;` |
-|10 | **Use the ternary operator to avoid value (non-nullish) override.** | **Use nullish assignment.** |
+|10 | **Use the ternary operator to avoid value (non-nullish) override.** | **Use [nullish assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_nullish_assignment).** |
 || `let x = (x === null || x === undefined) ? y : x;` | `let x ??= y;` // only assigns y to x when x is null or undefined |
 | 11 | **Use inline styling. Use the style attribute only to feedback custom property values.** | **Use a CSS class. Use the style attribute only to feedback custom property values.** |
 || `<element style={{ fontSize: '1em' }} />` | `const useStyles = makeStyles(() => ({` | 
