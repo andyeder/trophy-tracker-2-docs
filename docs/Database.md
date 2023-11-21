@@ -128,3 +128,7 @@ The UserPermissions object holds a user's create, update and delete permissions,
 | canCreate | Boolean | Whether or not the user can create documents. |
 | canUpdate | Boolean | Whether or not the user can update documents. |
 | canDelete | Boolean | Whether or not the user can delete documents. |
+
+## Entity Relationship Diagram (ERD)
+
+![Entity Relationship Diagram](ERD.drawio.png)
