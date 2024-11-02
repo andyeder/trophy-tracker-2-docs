@@ -1,15 +1,15 @@
 # TT2 - Technology & Tooling
 
-Trophy Tracker 2 will be using the MERN stack, which is one variation of the MEAN stack. The four key technologies that comprise the MERN stack are:
+Trophy Tracker 2 will be using a new Hypermedia stack using five key technologies:
 
-- MongoDB (document database)
-- Express (Node.js web framework)
-- React (client-side JavaScript framework)
-- Node (JavaScript web server)
+- [HTMX](https://htmx.org/) - low-JS hypermedia library
+- [AlpineJS](https://alpinejs.dev/) low-JS User Interaction library
+- [SQLite](https://www.sqlite.org/) - lightweight Relational database
+- [Express](https://expressjs.com/) - Web framework for Node, with [Handlebars](https://www.npmjs.com/package/express-handlebars) templating
+- [Node JS](https://nodejs.org/en) - JavaScript runtime
 
-MERN is a full stack solution that follows a traditional three-tier architecural pattern - front end presentation tier (React), application tier (Express and Node), and the database tier (MongoDB).
 
-TT2 development is broadly split into two projects, the Frontend (FE, client-side) and Backend (BE, server-side).
+__The following will be subject to significant change__
 
 ## Frontend (FE)
 
