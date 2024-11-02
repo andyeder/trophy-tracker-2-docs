@@ -1,6 +1,6 @@
 # Trophy Tracker 2
 
-**Trophy Tracker 2** (from here on referred to as **TT2**) is a _"from the ground up"_ redesign and rewrite of Trophy Tracker. The primary aim is for TT2 to become a useful resource for those people who are interested in the RenaultSport (RS) Clio 182 Trophy car.
+[**Trophy Tracker 2**](https://github.com/andyeder/trophy-tracker-2) (from here on referred to as **TT2**) is a _"from the ground up"_ redesign and rewrite of Trophy Tracker. The primary aim is for TT2 to become a useful resource for those people who are interested in the RenaultSport (RS) Clio 182 Trophy car.
 
 ### Quick Links
 
