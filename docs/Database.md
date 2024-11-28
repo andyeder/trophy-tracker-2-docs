@@ -34,6 +34,8 @@ The CarSchema represents a single vehicle.
 | registrationDate    | Date     | Date of registration.                                                                    |
 | colour              | String   | The car's main colour (standard is Capsicum Red).                                        |
 | vin                 | String   | Vehicle Identification Number (VIN).                                                     |
+| insuranceCategory   | String   | Insurance Category.                                                                      |
+| numberOfOwners      | Number   | Number of owners.                                                                        |
 | vrmOriginal         | String   | The original Vehicle Registration Mark (VRM/licence plate).                              |
 | vrmLastKnown        | String   | The last known Vehicle Registration Mark (VRM/licence plate).                            |
 | vrmHistory          | Array    | The car's VRM history (see VRMChange object).                                            |
@@ -91,9 +93,11 @@ The LocationHistoryEntry object is used to record location information - e.g. co
 
 The SaleHistoryEntry object is used to record sale (buying/selling) information.
 
-| Field | Type | Description                          |
-| :---- | :--- | :----------------------------------- |
-| date  | Date | The date associated with this entry. |
+| Field   | Type   | Description                          |
+| :------ | :----- | :----------------------------------- |
+| date    | Date   | The date associated with this entry. |
+| price   | Number | Price at time of sale.               |
+| mileage | Number | Mileage at time of sale.             |
 
 #### ExternalLinks Object
 
