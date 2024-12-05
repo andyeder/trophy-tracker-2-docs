@@ -55,10 +55,10 @@ The SignatureItems object is used to record the presence of "signature items" fo
 | :---------------------- | :------- | :-------------------------------------------------------------------------- |
 | \_id                    | ObjectId | Id (auto-generated).                                                        |
 | vehicleId               | ObjectId | Foreign key back into the Car table                                         |
-| hasSachsDampers         | String   | Whether or not the car has the signature Sachs dampers.                     |
-| hasRecaroTrendlineSeats | String   | Whether or not the car has the signature Recaro Trendline seats.            |
-| hasV6Spoiler            | String   | Whether or not the car has the signature V6 roof spoiler.                   |
-| hasTuriniWheels         | String   | Whether or not the car has the signature Trophy-spec Turini alloy wheels.   |
+| hasSachsDampers         | Boolean  | Whether or not the car has the signature Sachs dampers.                     |
+| hasRecaroTrendlineSeats | Boolean  | Whether or not the car has the signature Recaro Trendline seats.            |
+| hasV6Spoiler            | Boolean  | Whether or not the car has the signature V6 roof spoiler.                   |
+| hasTuriniWheels         | Boolean  | Whether or not the car has the signature Trophy-spec Turini alloy wheels.   |
 | notes                   | String   | General notes for recording signature item related information for the car. |
 
 #### StoryHistory
