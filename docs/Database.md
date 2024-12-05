@@ -106,8 +106,7 @@ The ExternalLinks object is used to capture links (URLs) to other sites that con
 | url         | String   | The website/resource URL.                                   |
 
 ## Entity Relationship Diagram (ERD)
-
-```Mermaid
+```mermaid
 erDiagram
   CARS ||--o{ VRM_CHANGE : "should have"
   CARS ||--o{ SIGNATURE_ITEMS : "may have"
