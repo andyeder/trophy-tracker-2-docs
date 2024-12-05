@@ -31,7 +31,6 @@ The Cars table has a row for each vehicle.
 | vrmLastKnown        | String   | The last known Vehicle Registration Mark (VRM/licence plate).        |
 | mileageRecorded     | Number   | The car's recorded (last known) mileage.                             |
 | mileageRecordedDate | Date     | The date on which the car's recorded (last known) mileage was taken. |
-| signatureItems      | Object   | The car's "signature items" (see SignatureItems object).             |
 | hasBeenScrapped     | Boolean  | Whether or not this car has been scrapped.                           |
 | scrappedDate        | Date     | Date on which the car was scrapped.                                  |
 
