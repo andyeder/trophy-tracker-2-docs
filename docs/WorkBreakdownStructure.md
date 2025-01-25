@@ -6,7 +6,7 @@
      1. Vehicle
      2. :
   2. Indexes
-  3. Constraints (foriegn keys links)
+  3. Constraints (foreign keys links)
 3. Stores
 4. Routes
 5. Templates
