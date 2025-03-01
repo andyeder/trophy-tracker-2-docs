@@ -17,22 +17,23 @@ The Cars table has a row for each vehicle.
 | Field               | Type     | Nullable | Description                                                          |
 | :------------------ | :------- | :------: | :------------------------------------------------------------------- |
 | \_id                | ObjectId | auto     | Id (auto-generated).                                                 |
-| vin                 | String   | No       | Vehicle Identification Number (VIN).                                 |
-| vrmLastKnown        | String   | no       | The last known Vehicle Registration Mark (VRM/licence plate).        |
-| seriesNumber        | Number   | yes      | The supposedly unique car number - 001-500 (UK), 01-50 (SWISS).      |
 | createdAt           | Date     | yes      | Entry creation date (in ISO string format).                          |
 | updatedAt           | Date     | yes      | Entry updated date (in ISO string format).                           |
-| numberOfViews       | Number   | yes      | The number of times that this car has been viewed.                   |
 | targetMarket        | String   | yes      | The target market for this car, either "UK" or "SWISS".              |
+| seriesNumber        | Number   | yes      | The supposedly unique car number - 001-500 (UK), 01-50 (SWISS).      |
 | registrationDate    | Date     | yes      | Date of registration.                                                |
+| vin                 | String   | No       | Vehicle Identification Number (VIN).                                 |
 | insuranceCategory   | String   | yes      | Insurance Category.                                                  |
 | vrmOriginal         | String   | yes      | The original Vehicle Registration Mark (VRM/licence plate).          |
+| vrmLastKnown        | String   | No       | The last known Vehicle Registration Mark (VRM/licence plate).        |
 | numberOfOwners      | Number   | yes      | Number of owners.                                                    |
 | colour              | String   | yes      | The car's main colour (standard is Capsicum Red).                    |
 | mileageRecorded     | Number   | yes      | The car's recorded (last known) mileage.                             |
 | mileageRecordedDate | Date     | yes      | The date on which the car's recorded (last known) mileage was taken. |
 | hasBeenScrapped     | Boolean  | yes      | Whether or not this car has been scrapped.                           |
 | scrappedDate        | Date     | yes      | Date on which the car was scrapped.                                  |
+| numberOfViews       | Number   | yes      | The number of times that this car has been viewed.                   |
+
 
 #### SignatureItems
 
@@ -48,6 +49,7 @@ The SignatureItems object is used to record the presence of "signature items" fo
 | hasTuriniWheels         | Boolean  | No       | Whether or not the car has the signature Trophy-spec Turini alloy wheels.   |
 | notes                   | String   | No       | General notes for recording signature item related information for the car. |
 
+
 #### SaleHistory
 
 The SaleHistoryEntry object is used to record sale (buying/selling) information.
@@ -59,9 +61,10 @@ The SaleHistoryEntry object is used to record sale (buying/selling) information.
 | date       | Date     | No       | The date associated with this entry. |
 | price      | Number   | No       | Price at time of sale.               |
 | mileage    | Number   | No       | Mileage at time of sale.             |
-| quality    | Number   | No       | Report quality at time of sale.      |
 | typeOfSale | String   | No       | Unnkown/Private/Dealer/Auction.      |
+| quality    | Number   | No       | Report quality at time of sale.      |
 | notes      | String   | No       | General notes of sale.               |
+
 
 #### VRMChanges
 
@@ -75,6 +78,7 @@ The VRMChange object is used to record changes to the VRM (licence plate).
 | vrmFrom    | String   | yes      | The 'changing from' VRM.           |
 | vrmTo      | String   | yes      | The 'changing to' VRM.              |
 
+
 #### LocationHistory
 
 The LocationHistoryEntry object is used to record location information - e.g. country of residence, etc. TBC.
@@ -83,9 +87,10 @@ The LocationHistoryEntry object is used to record location information - e.g. co
 | :-------- | :------- | :------: | :----------------------------------- |
 | \_id      | ObjectId | auto     | Id (auto-generated).                 |
 | vehicleId | ObjectId | No       | Foreign key back into the Car table  |
-| country   | String   | No       |  |
-| region    | String   | No       |  |
+| country   | String   | Yes      |                                      |
+| region    | String   | Yes      |                                      |
 | date      | Date     | No       | The date associated with this entry. |
+
 
 #### StoryHistory
 
@@ -96,7 +101,9 @@ The StoryHistoryEntry object is used to record a story (general update) at a poi
 | \_id      | ObjectId | auto     | Id (auto-generated).                                                               |
 | vehicleId | ObjectId | No       | Foreign key back into the Car table                                                |
 | date      | Date     | No       | The date associated with this story.                                               |
-| content   | String   | No       | The story content. (Restrict to text-only or allow some basic styling, e.g. HTML?) |
+| story     | String   | No       | The story content. (Restrict to text-only or allow some basic styling, e.g. HTML?) |
+| file      | String   | Yes      | Path to an image file,                                                             |
+
 
 #### ExternalLinks
 
@@ -110,13 +117,13 @@ The ExternalLinks object is used to capture links (URLs) to other sites that con
 | description | String   | No       | A description of what can be found when following the link. |
 | url         | String   | Yes      | The website/resource URL.                                   |
 
+
 ## Entity Relationship Diagram (ERD)
 ```mermaid
 erDiagram
-  CARS ||--o{ VRM_CHANGE : "should have"
   CARS ||--o{ SIGNATURE_ITEMS : "may have"
   CARS ||--o{ SALES_HISTORY : "may have"
-  CARS ||--o{ VRM_HISTORY : "may have"
+  CARS ||--o{ VRM_CHANGE : "should have"
   CARS ||--o{ LOCATION_HISTORY : "may have"
   CARS ||--o{ STORY_HISTORY : "may have"
   CARS ||--o{ EXTERNAL_LINKS : "may have"
