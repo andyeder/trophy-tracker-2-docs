@@ -32,7 +32,7 @@ Before commencing implementation make sure the requirement is well defined and e
 
 ## Tooling 
 
-1. Employ an active linter like [TSLint](https://palantir.github.io/tslint/) or [ESLint](https://eslint.org/).  
+1. Employ an active linter like [ESLint](https://eslint.org/).  
 
 1. Use a [prettifier](https://prettier.io/) configured to revise on save to ensure common rules are applied consistently.  
 
@@ -44,7 +44,7 @@ Before commencing implementation make sure the requirement is well defined and e
 
 ## General guidance 
 
-1. Semicolons should always be used to terminate all statements, enforced through prettier/lint rules. 
+1. Semicolons should always be used to terminate all statements, usually enforced through prettier/lint rules. 
 
 1. One statement per line. Single statements following a conditional (if/else) should appear on the same line as the conditional. 
 
@@ -92,95 +92,13 @@ Before commencing implementation make sure the requirement is well defined and e
         - use `{ 1, UL }`  or `{ 0, UL }`
         - where UL is a reasonable Upper Limit. 
 
-## Project folder structure recommendation 
-
-1. Only host App files in the top level 'src' folder with sub folders for everything else.  
-
-1. Screen-specific Components should be located with the screen files.  
-
-1. Components folder potentially with sub-folders; atoms, molecules and organisms.  
-
-1. Separate Screens, Services/Helpers and Layouts/Templates folders containing ALL the files. 
-
-## General React guidance 
-
-1. Only routing, global context and the application-wide screen content to be held within App.  
-
-1. Document all components (especially graphical ones) to demonstrate alignment with the project's style guide. It should also provide information for developers when components are provided as a library.  
-
-1. Screens and components should be kept small (subjective measure) and split out into View and View-Model sub-components should the business logic become too complicated.  
-
-1. Keep the amount of logical code in the HTML (View) to an absolute minimum.  
-
-1. Generic components should be kept free of all business logic and specialised data structures.  
-
-1. Only use Redux when it has been demonstrated React state management facilities are insufficient. 
-    * Consider using `useContext` , `useReducer` and `useState` hooks in preference. 
-
-1. Hooks:
-
-    1. Use the useRef hook and ref attribute to access DOM elements in preference to querySelector ~ or getElement~ methods. 
-
-    1. Use the useEffect hook as the primary place to retrieve remote data. 
-
-    1. Call setState  functions using a function argument in preference to just provide the new value. 
-
-    1. Use multiple `useState` instances rather than a single large useState  object. 
-
-    1. Consider combining multiple common hooks into a custom hook to aid testing documentation and potential reuse. 
-
-    1.  In custom hooks use `useDefaultValue` with the deferred formatting function to provide diagnostic information in DevTools. 
-
-    1. `useReducer` should employ a map object in preference to a switch statement and throw an exception if the action type is not recognised. 
-
-    1. Define the action types employed by a `useReducer` hook in the form of a constant object that can be exported and referenced elsewhere in the project. 
-
-1. Keep project dependencies up to date to minimise migration impact and remove potential security vulnerabilities as soon as possible.  
-
-1. Use functional components in preference to class-based components, which is the latest guidance from the library author. 
-
-1. Props: 
-
-    1. List all props used in alphabetic order use propTypes to ensure data types are verified before use. 
-
-    1. Group mandatory "required" props first followed by optional props. 
-
-    1. Provide a fallback value for all optional props using defaultProps  
-
-    1. A component's propTypes  and defaultProps should appear at the bottom of the file before any 'export' statements.  
-
-1. Avoid using anonymous functions in the template as they are more difficult to debug and test than referencing a named function in the screen/component. 
-
-1. Consider using styled components. 
-
-1. Restrict the use of DIV elements to enclose sub-components of screens/components, use fragments as an alternative but only to wrap multiple sub-components.  
-
-1. Keep an eye on when and why re-renders are performed, as this can be an early indication of inefficient code.  
-
-1. All static imports should be located at the top of the file in the following sequence:  
-
-    1. Third-party components 
-
-    1. Generic components 
-
-    1. Screen-specific components 
-
-    1. Screen-specific sub-elements 
-
-1. The application of conditional rendering should be elevated to point of use rather than contained within the component definition. 
-
-1. Binary (on/off) conditional rendering should employ the (condition && render) approach rather than using a ternary operator returning null as the false statement. 
-
-1. One component per file and consolidate component (and its sub-component) files in its/their own folder. 
-
-1. Include an index.js ('[barrel](https://srinivasankk.com/javascript-barrel/)') file in each component folder to reduce the length of the reference path. Update, Recent articles have brought this advice into question but investigations into moderate sized projects do not indicate is technique to be problematic.
 
 ## Observed Don'ts and Does 
 
 The following list are a set of recommendations to improve current practice and make the current code base more consistent with other frontend projects. Links to relevant [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) pages have been provided. 
 
 | #    | Don't   | Do     |
-| :--: | :----: | :----: |
+| :--: | :----- | :----- |
 | 1    | Evaluate the length of an array or size of map/set for truth/false. | Use the [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)/[falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) nature of the numeric coercion, 0 = false, non-zero = true. |
 || `if (array.length === 0)` | `if (!array.length)` |
 || `if (array.length >= 1)` | `if (array.length)` |
@@ -199,12 +117,12 @@ The following list are a set of recommendations to improve current practice and 
 | 5 | Use a ternary operator to return literal true/false. | Just use the condition, even if it needs inverting. |
 || `let variable = (condition) ? true : false;` | `let variable = condition;` |
 || `return (condition) ? false : true;` | `return !condition;` |
-| 6 | Always check for the existence of a property in an object using the in operator. | Often using [optional-chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) will simplify things. |
+| 6 | Check for the existence of a property in an object using the in operator. | Often using [optional-chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining) will simplify things. |
 || `'time' in props.filters && 'key' in props.filters.time` | `'key' in props.filters?.time` |
 || | Care has to be taken when dealing with properties holding primitive values as the falsy value can provide the same feedback as a null or undefined property. In the example above, if the property 'key' is expected to hold a complex value like an object or array, the following can be used to check the property is valid. |
 || | `props.filters?.time?.key` |
 || | This mechanism can be used to check methods exist before executing them or array elements exist. |
-| 7 | Use arrow functions in place of methods. This does not include calling methods from within arrow-functions used as event handlers. | Use standards methods. |
+| 7 | Use arrow functions properties in place of methods. This does not include calling methods from within arrow-functions used as event handlers. | Use standards methods. |
 || `class ExampleClass {` | `class ExampleClass { ` |
 ||  `property = () => {` | ` method() { ` |
 || `    // do some action context of THIS` |  `  // do some action context of THIS ` |
@@ -213,21 +131,14 @@ The following list are a set of recommendations to improve current practice and 
 | 8 | Use the ternary operator for simple conditionals such as: | Use the [logical shortcut &&](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND). |
 || `(condition) ? doSomething() : null;  /*Do nothing */` |  `(condition) && doSomething(); `|
 || | Especially in the case of conditional rendering of JSX. |
-| 9 | **Use the ternary operator to avoid (truthy) value override.** | **Use the [logical shortcut \|\|](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment).** |
-|| `let x = (x !== '') ? x : y; // keep x if not an empty string, otherwise set to y` | `let x \|\|= y;` |
-|10 | **Use the ternary operator to avoid value (non-nullish) override.** | **Use [nullish assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_nullish_assignment).** |
+| 9 | Use the ternary operator to avoid (truthy) value override. | Use the [logical shortcut \|\|](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR_assignment). |
+|| `let x = (x !== \'\') ? x : y; // keep x if not an empty string, otherwise set to y` | `let x \|\|= y;` |
+|10 | **Use the ternary operator to avoid value (non-nullish) override. | Use [nullish assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_nullish_assignment). |
 || `let x = (x === null || x === undefined) ? y : x;` | `let x ??= y;` // only assigns y to x when x is null or undefined |
-| 11 | **Use inline styling. Use the style attribute only to feedback custom property values.** | **Use a CSS class. Use the style attribute only to feedback custom property values.** |
-|| `<element style={{ fontSize: '1em' }} />` | `const useStyles = makeStyles(() => ({` | 
-|| | `defaultTextSize: { ` |
-|| | `    fontSize: '1em', ` |
-|| | `  } ` |
-|| | `})); ` |
-|| | `<element className={classes.defaultTextSize} />` |
-| 12 | **Include presentation logic directly in the style or className attributes.** | **Declare a function/method to perform the logic and reference it in the attribute.** |
+| 12 | Include presentation logic directly in the style or className attributes. | Declare a function/method to perform the logic and reference it in the attribute. |
 || `<element style={{ fontSize: isBigText ? '2em' : '1em' }} />` | `<element className={getTextSize(isBigText)} />` |
-|| | ```function getTextSize(isBigText) {
-  return isBigText ? 'largeTextSize' : 'defaultTextSize';
-}``` |
+|| | `function getTextSize(isBigText) {`
+|| |   `return isBigText ? 'largeTextSize' : 'defaultTextSize';
+|| | `}` |
 
  
