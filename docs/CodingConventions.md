@@ -80,17 +80,17 @@ Before commencing implementation make sure the requirement is well defined and e
 
     1. Whenever possible "top and/or tail" RegExp patterns using the `^` and `$` symbols. 
 
-    1. Test, test and test some more. Not just the positive cases but more importantly the negative and edge cases.  
-
-        * Test positive cases 
-        * Test negative cases 
-        * Test edge cases 
-
     1. Whenever possible bound repetitions.  
 
         - Instead of using `+` (one or more) or `*` (any number),
         - use `{ 1, UL }`  or `{ 0, UL }`
         - where UL is a reasonable Upper Limit. 
+
+    1. Test, test and test some more. Not just the positive cases but more importantly the negative and edge cases.  
+
+        * Test positive cases 
+        * Test negative cases 
+        * Test edge cases 
 
 
 ## Observed Don'ts and Does 
