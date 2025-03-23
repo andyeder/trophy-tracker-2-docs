@@ -10,8 +10,6 @@ Trophy Tracker 2 will be using a new Hypermedia stack using five key technologie
 
 ## General tooling
 
-_(Work-in-progress... please feel free to expand on this section...)_
-
 Some of the tools and plug-ins we might use:
 
 - [ESLint](https://eslint.org/) - ECMAScript Linting (code quality) tool
@@ -20,8 +18,10 @@ Some of the tools and plug-ins we might use:
 - [NVM for Windows](https://github.com/coreybutler/nvm-windows) - Node Version Manager for Windows
 - [Prettier](https://prettier.io/) - Code formatter
 - [Visual Studio Code](https://code.visualstudio.com/) - Integrated Development Environment (IDE)
-- [Vite](https://vitejs.dev) - next-generation frontend tooling
-- [Vitest](https://vitest.dev/guide/) - next-generation testing tool.
+- [Vite](https://vitejs.dev) - Next-generation frontend tooling
+- [Vitest](https://vitest.dev/guide/) - Next-generation testing tool
+- [SQLiteStudio](https://sqlitestudio.pl/) - Create, edit, browse SQLite databases
+- [DB Browser for SQLite](https://sqlitebrowser.org/) - Create, edit, browse SQLite databases
 
 ## Installation Sequence
 
